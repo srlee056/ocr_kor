@@ -67,9 +67,9 @@ def train(opt):
             continue
 
     # data parallel for multi-GPU
-    # model = torch.nn.DataParallel(model).to(device)
-    model.cuda(opt.gpu)
-    model = DDP(model, delay_allreduce=True).to(device)
+    model = torch.nn.DataParallel(model).to(device)
+   # model.cuda(opt.gpu)
+    #model = DDP(model, delay_allreduce=True).to(device)
     model.train()
     if opt.continue_model != '':
         print(f'loading pretrained model from {opt.continue_model}')
